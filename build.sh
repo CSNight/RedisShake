@@ -44,7 +44,12 @@ goos=(linux darwin windows)
 for g in "${goos[@]}"; do
     export GOOS=$g
     echo "try build goos=$g"
-    $run_builder -ldflags "-X $info" -o "${output}/redis-shake.$g" "./src/redis-shake/main/main.go"
+    outputs="${output}/redis-shake.$g"
+    if [ $g = "windows" ]; then
+        outputs="${output}/redis-shake.$g.exe"
+    fi
+    echo  "${outputs}"
+    $run_builder -ldflags "-X $info" -o "${outputs}"  "./src/redis-shake/main/main.go"
     echo "build $g successfully!"
 done
 

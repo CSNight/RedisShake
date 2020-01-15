@@ -17,6 +17,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/FZambia/go-sentinel"
+	redigo "github.com/garyburd/redigo/redis"
+	redigoCluster "github.com/vinllen/redis-go-cluster"
 	"pkg/libs/atomic2"
 	"pkg/libs/errors"
 	"pkg/libs/log"
@@ -24,10 +27,6 @@ import (
 	"pkg/rdb"
 	"pkg/redis"
 	"redis-shake/configure"
-
-	"github.com/FZambia/go-sentinel"
-	redigo "github.com/garyburd/redigo/redis"
-	redigoCluster "github.com/vinllen/redis-go-cluster"
 )
 
 func OpenRedisConn(target []string, auth_type, passwd string, isCluster bool, tlsEnable bool) redigo.Conn {
