@@ -37,7 +37,7 @@ func (cmd *CmdDump) Main() {
 		nd := node{
 			id:     i,
 			source: source,
-			output: fmt.Sprintf("%s.%d", conf.Options.TargetRdbOutput, i),
+			output: fmt.Sprintf("%s", conf.Options.TargetRdbOutput),
 		}
 		cmd.dumpChan <- nd
 	}
