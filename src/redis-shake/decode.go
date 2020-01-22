@@ -42,9 +42,9 @@ func (cmd *CmdDecode) GetDetailedInfo() interface{} {
 func (cmd *CmdDecode) Main() {
 	log.Infof("decode from '%s' to '%s'\n", conf.Options.SourceRdbInput, conf.Options.TargetRdbOutput)
 
-	for i, input := range conf.Options.SourceRdbInput {
+	for _, input := range conf.Options.SourceRdbInput {
 		// decode one by one. By now, we don't support decoding concurrence.
-		output := fmt.Sprintf("%s.%d", conf.Options.TargetRdbOutput, i)
+		output := fmt.Sprintf("%s", conf.Options.TargetRdbOutput)
 		cmd.decode(input, output)
 	}
 
