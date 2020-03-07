@@ -840,6 +840,7 @@ RESTORE:
 					params = append(params, "REPLACE")
 				} else {
 					_, err = redigo.String(c.Do("del", e.Key))
+					_, err = redigoCluster.Int(c.Do("del", e.Key))
 					if err != nil {
 						log.Panicf("delete key[%v] failed[%v]", string(e.Key), err)
 					}
